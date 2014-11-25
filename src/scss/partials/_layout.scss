@@ -1,0 +1,26 @@
+.picture-frame {
+  @include clearfix;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.picture-before {
+  float: left;
+  width: 50%;
+  text-align: right;
+
+  .dropzone {
+    margin-left: auto;
+  }
+}
+
+.picture-after {
+  float: left;
+  width: 50%;
+  text-align: left;
+
+  .dropzone {
+    margin-right: auto;
+  }
+}

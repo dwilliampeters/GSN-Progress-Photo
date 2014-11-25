@@ -1,9 +1,13 @@
 @charset "UTF-8";
 
 // Modules and Variables
+@import "modules/clearfix";
+@import "modules/box-sizing";
 @import "partials/base";
 
 // Partials
+@import "partials/reset";
+@import "partials/layout";
 /*@import "partials/reset";
 @import "partials/typography";
 @import "partials/buttons";
