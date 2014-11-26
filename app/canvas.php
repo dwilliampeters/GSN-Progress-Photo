@@ -3,6 +3,8 @@
 header('Content-Type: application/json');
 //ini_set('memory_limit','16M');
 
+$_SESSION["user"];
+
 $error					= false;
 
 $absolutedir			= dirname(__FILE__);
@@ -22,7 +24,8 @@ fclose($handle);
 $response = array(
 		"status" 		=> "success",
 		"url" 			=> $dir.$filename.'?'.time(), //added the time to force update when editting multiple times
-		"filename" 		=> $filename
+		"filename" 		=> $filename,
+        "session" 		=> $_SESSION
 );
 
 

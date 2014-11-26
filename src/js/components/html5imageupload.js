@@ -849,4 +849,3 @@ function empty(mixed_var) {
 
 
 
-
