@@ -16,17 +16,31 @@
         <main id="content" class="group" role="main">
           <div class="main">
 
-            <div class="picture-frame">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control">
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" name="email" class="form-control">
+            </div>
+
+            <div class="form-group picture-frame">
               <div class="picture-before">
                 <div class="dropzone" data-width="401" data-height="500" data-ghost="false" data-url="canvas.php" data-resize="true" style="width: 100%;">
-                  <input type="file" name="thumb" />
+                  <input type="file" name="thumb" required="required" />
                 </div>
               </div>
               <div class="picture-after">
                 <div class="dropzone" data-width="401" data-height="500" data-ghost="false" data-url="canvas.php" data-resize="true" style="width: 100%;">
-                  <input type="file" name="thumb" />
+                  <input type="file" name="thumb" required="required" />
                 </div>
               </div>
+            </div>
+
+            <div class="form-btn">
+              <button type="submit" class="btn btn-default">Submit</button>
             </div>
 
           </div>
