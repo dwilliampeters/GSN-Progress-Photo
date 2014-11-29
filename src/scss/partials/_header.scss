@@ -1,3 +1,33 @@
 .banner {
+  @include clearfix;
   padding: 10px;
+  background: black;
+}
+
+.banner--title {
+  padding-top: 50px;
+  text-align: center;
+  @media (min-width: 768px) {
+    padding-top: 0;
+  }
+  a {
+    color: white;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.banner--brand {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  padding: 10px;
+  @media (min-width: 768px) {
+    width: 250px;
+  }
+  img {
+    max-width: 100%;
+  }
 }

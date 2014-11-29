@@ -1,7 +1,7 @@
 <?php
 
 //header('Content-Type: application/json');
-//ini_set('memory_limit','16M');
+ini_set('memory_limit','256M');
 
 $error            = false;
 
@@ -39,8 +39,37 @@ $img3 = $absolutedir.$appImgDir.$imgDay1;
 $img4 = $absolutedir.$appImgDir.$imgDay7;
 $img5 = $absolutedir.$appImgDir.$imgShare;
 
-$src1 = imagecreatefromjpeg($img1);
-$src2 = imagecreatefromjpeg($img2);
+/*$src1 = imagecreatefromjpeg($img1);
+$src2 = imagecreatefromjpeg($img2);*/
+function imageCreateFromAny($filepath) { 
+  $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize() 
+  $allowedTypes = array( 
+    1,  // [] gif 
+    2,  // [] jpg 
+    3,  // [] png 
+    6   // [] bmp 
+  ); 
+  if (!in_array($type, $allowedTypes)) { 
+    return false; 
+  } 
+  switch ($type) { 
+    case 1 : 
+      $im = imageCreateFromGif($filepath); 
+    break; 
+    case 2 : 
+      $im = imageCreateFromJpeg($filepath); 
+    break; 
+    case 3 : 
+      $im = imageCreateFromPng($filepath); 
+    break; 
+    case 6 : 
+      $im = imageCreateFromBmp($filepath); 
+    break; 
+  }    
+  return $im;  
+}
+$src1 = imageCreateFromAny($img1);
+$src2 = imageCreateFromAny($img2);
 $src3 = imagecreatefrompng($img3);
 $src4 = imagecreatefrompng($img4);
 $src5 = imagecreatefrompng($img5);
@@ -57,7 +86,9 @@ imagecopyresampled($dest, $src2, 411, 5, 0, 0, 802, 500, 802, 500);
 imagecopyresampled($dest, $src4, 421, 10, 0, 0, 200, 50, 200, 50);
 imagecopyresampled($dest, $src5, 5, 300, 0, 0, 802, 200, 802, 200);
 
-imagejpeg($dest, 'test.jpg', 100);
+$uploadDir = 'uploads/';
+$uploadFilename = 'img_'.date('Y-m-d-H-s').'.jpg';
+imagejpeg($dest, $uploadDir.$uploadFilename, 100);
 
 imagedestroy($dest);
 imagedestroy($src);
@@ -65,13 +96,13 @@ imagedestroy($src);
 // Details
 
 if(isset($_POST['name']) && isset($_POST['email'])) {
-  $data = $_POST['name'] . '-' . $_POST['email'] . "\n";
+  $data = $_POST['name'] . '-' . $_POST['email'] . '-' . $uploadFilename . "\n";
   $ret = file_put_contents('data.txt', $data, FILE_APPEND | LOCK_EX);
   if($ret === false) {
     die('There was an error writing this file');
   }
   else {
-    echo "$ret bytes written to file";
+    //echo "$ret bytes written to file";
   }
 }
 else {
@@ -86,7 +117,7 @@ else {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HTML5 Image upload width drag and drop, crop and ratio</title>
+    <title>GSN 30 Day Abs Challenge</title>
 
     <meta name="description" content="A HTML5 image upload plugin build with jQuery. Can drag and drop an image, crop it and change ratio." />
 
@@ -114,14 +145,14 @@ else {
       <div class="col-xs-12">
 
         <div class="text-center">
-          <img src="test.jpg" class="img-thumbnail img-responsive" />
+          <img src="uploads/<?php echo $uploadFilename; ?>" class="img-thumbnail img-responsive" />
         </div>
 
         <p>&nbsp;</p>
 
         <div class="row">
           <div class="col-xs-12">
-            <p class="text-center"><a href="/gsnchallenge/" class="btn btn-success"><i class="glyphicon glyphicon-chevron-left"></i> Start over</a></p>
+            <p class="text-center"><a href="/30DayChallenge/transformation-pictures/" class="btn btn-success"><i class="glyphicon glyphicon-chevron-left"></i> Start over</a></p>
           </div>
         </div>
 

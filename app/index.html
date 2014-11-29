@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Home</title>
+<title>GSN 30 Day Abs Challenge</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,8 +14,6 @@
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/app.css">
-<link rel="stylesheet" href="css/demo.html5imageupload.css">
-<link rel="stylesheet" href="css/html5imageupload.css">
 <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 <!--[if lt IE 9]><script src="js/vendor/respond.js"></script><![endif]-->
 
@@ -30,6 +28,9 @@
             <div class="banner--title">
               <a href="#"><h1>GSN 30 Day Challenge</h1></a>
             </div>
+            <div class="banner--brand">
+              <a href="http://goldstandardnutrition.co.uk/"><img src="img/logo-gsn.png" alt="Gold Standard Nutrition"></a>
+            </div>
           </div>
         </header>
 
@@ -37,32 +38,51 @@
         <main id="content" class="group" role="main">
           <div class="main">
             <form enctype="multipart/form-data" action="result.php" method="post" role="form">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" name="name" class="form-control" required="required">
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" name="email" class="form-control" required="required">
-            </div>
-
-            <div class="form-group picture-frame">
-              <div class="picture-before">
-                <div class="dropzone" data-width="401" data-height="500" data-ajax="false" data-originalsave="true" style="width: 100%;">
-                  <input type="file" name="thumb" required="required" />
+            
+              <div class="row row-centered">
+                <div class="col-xs-9 col-md-6 col-centered">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control" required="required">
+                  </div>
                 </div>
               </div>
-              <div class="picture-after">
-                <div class="dropzone" data-width="401" data-height="500" data-ajax="false" data-originalsave="true" style="width: 100%;">
-                  <input type="file" name="thumb2" required="required" />
+
+              <div class="row row-centered">
+                <div class="col-xs-9 col-md-6 col-centered">
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control" required="required">
+                  </div>
                 </div>
               </div>
-            </div>
+              
+              <div class="row row-centered">
+                <div class="col-xs-12 col-centered">
+                  <div class="form-group picture-frame">
+                    <div class=" picture-before">
+                      <div class="dropzone" data-width="401" data-height="500" data-ajax="false" data-originalsave="true" style="width: 100%;">
+                        <input type="file" name="thumb" required="required" />
+                      </div>
+                    </div>
+                    <div class="picture-after">
+                      <div class="dropzone" data-width="401" data-height="500" data-ajax="false" data-originalsave="true" style="width: 100%;">
+                        <input type="file" name="thumb2" required="required" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row row-centered">
+                <div class="col-xs-9 col-md-6 col-centered">
+                  <div class="text-center"><p>Complete your name and email address to have the final image sent to you. Alternatively you can right click the image then share it on any social media you wish. We will not use your image without your permission.</p></div>
+                </div>
+              </div>
 
-            <div class="form-btn text-center">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </div>
+              <div class="form-btn text-center">
+                <button type="submit" class="btn btn-default">Create your before &amp; after photo</button>
+              </div>
             </form>
 
           </div>
@@ -72,7 +92,6 @@
   <div>
 
     <div class="contentinfo--legal">
-      <p>Terms and conditions apply.</p>
     </div>
 
   </div>
@@ -84,7 +103,6 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
-    <script src="js/html5imageupload.min.js"></script>
     <script src="js/app.js"></script>
     <script>
     $('#retrievingfilename').html5imageupload({

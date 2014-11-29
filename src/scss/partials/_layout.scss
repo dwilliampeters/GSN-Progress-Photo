@@ -1,33 +1,60 @@
+.main {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
 .picture-frame {
-  @include clearfix;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-.picture-before {
-  float: left;
-  width: 50%;
-  text-align: right;
-
-  .dropzone {
-    margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 240px;
+  
+  @media (min-width: 540px) {
+    width: 500px;
+  }
+  
+  @media (min-width: 768px) {
+    width: 700px;
+  }
+  
+  @media (min-width: 992px ) {
+    width: 900px;
   }
 }
 
+.picture-before,
 .picture-after {
-  float: left;
-  width: 50%;
-  text-align: left;
-
-  .dropzone {
-    margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  width: 240px;
+  
+  
+  @media (min-width: 540px) {
+    width: 250px;
+    float: left;
   }
-}
-
-.form-group {
-  padding-left: 10px;
-  padding-right: 10px;
+  
+  @media (min-width: 768px) {
+    width: 350px;
+  }
+  
+  @media (min-width: 992px ) {
+    width: 450px;
+  }
 }
 
 .form-btn {
