@@ -37,9 +37,10 @@
 
         <main id="content" class="group" role="main">
           <div class="main">
-            <form enctype="multipart/form-data" action="result.php" method="post" role="form">
-            
-              <div class="row row-centered">
+            <!--<form enctype="multipart/form-data" action="" method="post" role="form">-->
+            <!--<form enctype="multipart/form-data" action="result.php" method="post" role="form">-->
+
+              <!--<div class="row row-centered">
                 <div class="col-xs-9 col-md-6 col-centered">
                   <div class="form-group">
                     <label for="name">Name</label>
@@ -55,25 +56,40 @@
                     <input type="email" name="email" class="form-control" required="required">
                   </div>
                 </div>
-              </div>
-              
+              </div>-->
+
               <div class="row row-centered">
                 <div class="col-xs-12 col-centered">
                   <div class="form-group picture-frame">
-                    <div class=" picture-before">
-                      <div class="dropzone" data-width="401" data-height="500" data-ajax="false" data-originalsave="true" style="width: 100%;">
-                        <input type="file" name="thumb" required="required" />
+
+                    <div class="image-editor-1">
+                      <input type="file" class="cropit-image-input">
+                      <div class="cropit-image-preview"></div>
+                      <div class="image-size-label">
+                        Resize image
                       </div>
+                      <input type="range" class="cropit-image-zoom-input">
+                      <button class="export">Export</button>
+                      <div class="preview-image"></div>
                     </div>
-                    <div class="picture-after">
-                      <div class="dropzone" data-width="401" data-height="500" data-ajax="false" data-originalsave="true" style="width: 100%;">
-                        <input type="file" name="thumb2" required="required" />
+
+                    <hr>
+
+                    <div class="image-editor-2">
+                      <input type="file" class="cropit-image-input">
+                      <div class="cropit-image-preview"></div>
+                      <div class="image-size-label">
+                        Resize image
                       </div>
+                      <input type="range" class="cropit-image-zoom-input">
+                      <button class="export">Export</button>
+                      <div class="preview-image"></div>
                     </div>
+
                   </div>
                 </div>
               </div>
-              
+
               <div class="row row-centered">
                 <div class="col-xs-9 col-md-6 col-centered">
                   <div class="text-center"><p>Complete your name and email address to have the final image sent to you. Alternatively you can right click the image then share it on any social media you wish. We will not use your image without your permission.</p></div>
@@ -83,7 +99,7 @@
               <div class="form-btn text-center">
                 <button type="submit" class="btn btn-default">Create your before &amp; after photo</button>
               </div>
-            </form>
+            <!--</form>-->
 
           </div>
         </main>
