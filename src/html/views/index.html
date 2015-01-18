@@ -15,70 +15,90 @@
 
         <main id="content" class="group" role="main">
           <div class="main">
-            <!--<form enctype="multipart/form-data" action="" method="post" role="form">-->
-            <!--<form enctype="multipart/form-data" action="result.php" method="post" role="form">-->
+            <form enctype="multipart/form-data" action="result.php" method="post" role="form">
+              
+              <input type="hidden" name="image1" id="image1" value="">
+              <input type="hidden" name="image2" id="image2" value="">
+              
+              <div class="text-center"><p>Complete your name and email address to have the final image sent to you. Alternatively you can right click the image then share it on any social media you wish. We will not use your image without your permission.</p></div>
+              
+              <div class="step step-1 step-active">
 
-              <!--<div class="row row-centered">
-                <div class="col-xs-9 col-md-6 col-centered">
-                  <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" class="form-control" required="required">
-                  </div>
+                <h2>Your Details</h2>
+
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" name="name" class="form-control" value="Yoda" required="required">
                 </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" name="email" class="form-control" value="yoda@example.com" required="required">
+                </div>
+                
+                <hr>
+                
+                <div class="form-btn text-center">
+                  <button class="step-button" data-step="1">Next</button>
+                </div>
+
               </div>
+              <div class="step step-2">
 
-              <div class="row row-centered">
-                <div class="col-xs-9 col-md-6 col-centered">
-                  <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" required="required">
-                  </div>
-                </div>
-              </div>-->
+                <div class="form-group picture-frame">
 
-              <div class="row row-centered">
-                <div class="col-xs-12 col-centered">
-                  <div class="form-group picture-frame">
+                  <h2>Your Day 1 Photo</h2>
 
-                    <div class="image-editor-1">
-                      <input type="file" class="cropit-image-input">
-                      <div class="cropit-image-preview"></div>
-                      <div class="image-size-label">
-                        Resize image
-                      </div>
-                      <input type="range" class="cropit-image-zoom-input">
-                      <button class="export">Export</button>
-                      <div class="preview-image"></div>
+                  <div class="image-editor image-editor-1">
+                    <input type="file" class="cropit-image-input">
+                    <div class="cropit-image-preview"></div>
+                    <div class="image-size-label">
+                      Resize image
                     </div>
+                    <input type="range" class="cropit-image-zoom-input">
+                    <button class="export">Create</button>
 
-                    <hr>
-
-                    <div class="image-editor-2">
-                      <input type="file" class="cropit-image-input">
-                      <div class="cropit-image-preview"></div>
-                      <div class="image-size-label">
-                        Resize image
-                      </div>
-                      <input type="range" class="cropit-image-zoom-input">
-                      <button class="export">Export</button>
-                      <div class="preview-image"></div>
-                    </div>
-
+                    <div class="preview-image"><span>To create your photo, upload it above and click 'Create'</span></div>
                   </div>
+
                 </div>
-              </div>
-
-              <div class="row row-centered">
-                <div class="col-xs-9 col-md-6 col-centered">
-                  <div class="text-center"><p>Complete your name and email address to have the final image sent to you. Alternatively you can right click the image then share it on any social media you wish. We will not use your image without your permission.</p></div>
+                
+                <hr>
+                
+                <div class="form-btn text-center">
+                  <button class="step-button" data-step="2">Next</button>
                 </div>
-              </div>
 
-              <div class="form-btn text-center">
-                <button type="submit" class="btn btn-default">Create your before &amp; after photo</button>
               </div>
-            <!--</form>-->
+              <div class="step step-3">
 
+                <div class="form-group picture-frame">
+
+                  <h2>Your Day 2 Photo</h2>
+
+                  <div class="image-editor image-editor-2">
+                    <input type="file" class="cropit-image-input">
+                    <div class="cropit-image-preview"></div>
+                    <div class="image-size-label">
+                      Resize image
+                    </div>
+                    <input type="range" class="cropit-image-zoom-input">
+                    <button class="export">Create</button>
+
+                    <div class="preview-image"><span>To create your photo, upload it above and click 'Create'</span></div>
+                  </div>
+
+                </div>
+                
+                <hr>
+                
+                <div class="form-btn text-center">
+                  <button type="submit" class="btn btn-default">Create your before &amp; after photo</button>
+                </div>
+
+              </div>
+              
+            </form>
           </div>
         </main>
 

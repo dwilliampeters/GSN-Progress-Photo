@@ -10,21 +10,39 @@ $dir              = '/tmp/';
 $serverdir        = $absolutedir.$dir;
 $filename         = array();
 
-foreach($_FILES as $name => $value) {
-  $json           = json_decode($_POST[$name.'_values']);
-  $tmp            = explode(',',$json->data);
-  $imgdata        = base64_decode($tmp[1]);
-
-  $extension      = strtolower(end(explode('.',$json->name)));
-  $fname          = substr($json->name,0,-(strlen($extension) + 1)).'.'.substr(sha1(time()),0,6).'.'.$extension;
-
-
-  $handle         = fopen($serverdir.$fname,'w');
-  fwrite($handle, $imgdata);
-  fclose($handle);
-
-  $filename[]     = $fname;
+function saveImage($base64img, $imgNum, $serverdir, &$filename){
+  define('UPLOAD_DIR', $serverdir);
+  $base64img = str_replace('data:image/jpeg;base64,', '', $base64img);
+  $data = base64_decode($base64img);
+  $fname = substr(sha1(time()),0,6).'.'.$imgNum.'.jpg';
+  $file = UPLOAD_DIR.$fname;
+  file_put_contents($file,$data);
+  $filename[] = $fname;
+  
+  return $filename;
 }
+
+
+$imgBase1 = $_POST['image1'];
+$imgBase2 = $_POST['image2'];
+
+saveImage($imgBase1, 'img1', $serverdir, $filename);
+saveImage($imgBase2, 'img2', $serverdir, $filename);
+
+// Image 1
+/*$img1_base64img = str_replace('data:image/jpeg;base64,', '', $_POST['image1']);
+$img1_data = base64_decode($img1_base64img);
+$img1_fname = substr(sha1(time()),0,6).'.image1.jpg';
+$img1_file = $serverdir.$img1_fname;
+file_put_contents($img1_file,$img1_data);
+
+// Image 2
+$img2_base64img = str_replace('data:image/jpeg;base64,', '', $_POST['image2']);
+$img2_data = base64_decode($img2_base64img);
+$img2_fname = substr(sha1(time()),0,6).'.image2.jpg';
+$img2_file = $serverdir.$img2_fname;
+file_put_contents($img2_file,$img2_data);*/
+
 
 // Create the final image
 $appImgDir = '/img/';
@@ -35,12 +53,12 @@ $imgShare = 'share.png';
 
 $img1 = $serverdir.$filename[0];
 $img2 = $serverdir.$filename[1];
+/*$img1 = $serverdir.$img1_fname;
+$img2 = $serverdir.$img2_fname;*/
 $img3 = $absolutedir.$appImgDir.$imgDay1;
 $img4 = $absolutedir.$appImgDir.$imgDay7;
 $img5 = $absolutedir.$appImgDir.$imgShare;
 
-/*$src1 = imagecreatefromjpeg($img1);
-$src2 = imagecreatefromjpeg($img2);*/
 function imageCreateFromAny($filepath) { 
   $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize() 
   $allowedTypes = array( 
@@ -73,18 +91,13 @@ $src2 = imageCreateFromAny($img2);
 $src3 = imagecreatefrompng($img3);
 $src4 = imagecreatefrompng($img4);
 $src5 = imagecreatefrompng($img5);
-$dest = imagecreatetruecolor(817, 510);
+$dest = imagecreatetruecolor(600, 400);
 
-/*imagecopy($dest, $src1, 0, 0, 0, 0, 802, 500);
-imagecopy($dest, $src2, 401, 0, 0, 0, 802, 500);
-imagecopymerge($dest, $src3, 20, 20, 0, 0, 200, 50, 100);
-imagecopymerge($dest, $src4, 421, 20, 0, 0, 200, 50, 100);*/
-
-imagecopyresampled($dest, $src1, 5, 5, 0, 0, 802, 500, 802, 500);
+imagecopyresampled($dest, $src1, 0, 0, 0, 0, 600, 400, 600, 400);
 imagecopyresampled($dest, $src3, 20, 10, 0, 0, 200, 50, 200, 50);
-imagecopyresampled($dest, $src2, 411, 5, 0, 0, 802, 500, 802, 500);
-imagecopyresampled($dest, $src4, 421, 10, 0, 0, 200, 50, 200, 50);
-imagecopyresampled($dest, $src5, 5, 300, 0, 0, 802, 200, 802, 200);
+imagecopyresampled($dest, $src2, 300, 0, 0, 0, 600, 400, 600, 400);
+imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
+imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);
 
 $uploadDir = 'uploads/';
 $uploadFilename = 'img_'.date('Y-m-d-H-s').'.jpg';
@@ -100,12 +113,10 @@ if(isset($_POST['name']) && isset($_POST['email'])) {
   $ret = file_put_contents('data.txt', $data, FILE_APPEND | LOCK_EX);
   if($ret === false) {
     die('There was an error writing this file');
-  }
-  else {
+  } else {
     //echo "$ret bytes written to file";
   }
-}
-else {
+} else {
  die('no post data to process');
 }
 
@@ -118,56 +129,18 @@ else {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GSN 30 Day Abs Challenge</title>
-
-    <meta name="description" content="A HTML5 image upload plugin build with jQuery. Can drag and drop an image, crop it and change ratio." />
-
-    <!-- Bootstrap -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/css/html5imageupload.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>GSN 30 day challenge</h1>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
-
-        <div class="text-center">
-          <img src="uploads/<?php echo $uploadFilename; ?>" class="img-thumbnail img-responsive" />
-        </div>
-
-        <p>&nbsp;</p>
-
-        <div class="row">
-          <div class="col-xs-12">
-            <p class="text-center"><a href="/30DayChallenge/transformation-pictures/" class="btn btn-success"><i class="glyphicon glyphicon-chevron-left"></i> Start over</a></p>
-          </div>
-        </div>
-
+    <div class="container">
+      <div class="text-center">
+        <img src="uploads/<?php echo $uploadFilename; ?>" />
       </div>
 
     </div>
 
-  </div>
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
 
   </body>
 </html>

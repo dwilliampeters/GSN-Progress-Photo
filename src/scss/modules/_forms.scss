@@ -1,0 +1,18 @@
+input[type="text"],
+input[type="email"]{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #eee;
+}
+
+input[type="range"] {
+  width: 100%;
+  display: block;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
