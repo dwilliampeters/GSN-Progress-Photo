@@ -1,28 +1,41 @@
 $(function() {
   
   
+  // Days
+  var daySet = 2;
+  
+  $('#daySet').on('change', function(e) {
+    daySet = parseInt($(this).val(), 10);
+    console.log(daySet);
+  });
+  
   // Steps
   var calculate_step = 0;
 
+  /*$('.step').addClass('step-active');*/
+  
   $('.step-button').on('click', function(e) {
     e.preventDefault();
       
-    calculate_step = parseFloat($(this).attr('data-step'));
+    calculate_step = parseInt($(this).attr('data-step'), 10);
 
     calculate_step = (calculate_step + 1);
-    console.log(calculate_step);
 
     $('.step').removeClass('step-active');
-    $('.step.step-' + calculate_step).addClass('step-active');
+    $('.step-' + calculate_step).addClass('step-active');
+    
+    // Day
+    console.log(calculate_step);
+    console.log(daySet);
+    if (calculate_step === daySet) {
+      $('.step-end').addClass('step-active');
+      $('.step-' + calculate_step + ' .step-button').hide();
+    }
 
   });
   
-  /*var images = [];*/
-  
+  // Image 1
   $('.image-editor-1').cropit({
-    /*imageState: {
-      src: 'http://lorempixel.com/500/400/'
-    }*/
   });
 
   $('.image-editor-1 .export').click(function(e) {
@@ -33,18 +46,10 @@ $(function() {
     $('.image-editor-1 .preview-image').html('<img src="' + imageData1 + '">');
     console.log(imageData1);
     $('#image1').val(imageData1);
-    
-    /*images.push(imageData1);
-    console.log(images);*/
-    
-    // Prevent the form from actually submitting
-    //return false;
   });
-
+  
+  // Image 2
   $('.image-editor-2').cropit({
-    /*imageState: {
-      src: 'http://lorempixel.com/500/400/'
-    }*/
   });
 
   $('.image-editor-2 .export').click(function(e) {
@@ -55,12 +60,6 @@ $(function() {
     $('.image-editor-2 .preview-image').html('<img src="' + imageData2 + '">');
     console.log(imageData2);
     $('#image2').val(imageData2);
-    
-    /*images.push(imageData2);
-    console.log(images);*/
-    
-    // Prevent the form from actually submitting
-    //return false;
   });
   
 });
