@@ -1508,6 +1508,7 @@ $(function() {
   $('#daySet').on('change', function(e) {
     daySet = parseInt($(this).val(), 10);
     console.log(daySet);
+    $('#day').val(daySet);
   });
   
   // Steps
@@ -1561,6 +1562,34 @@ $(function() {
     $('.image-editor-2 .preview-image').html('<img src="' + imageData2 + '">');
     console.log(imageData2);
     $('#image2').val(imageData2);
+  });
+  
+  // Image 2
+  $('.image-editor-3').cropit({
+  });
+
+  $('.image-editor-3 .export').click(function(e) {
+    e.preventDefault();
+    var imageData2 = $('.image-editor-3').cropit('export', {
+      type: 'image/jpeg'
+    });
+    $('.image-editor-3 .preview-image').html('<img src="' + imageData2 + '">');
+    console.log(imageData2);
+    $('#image3').val(imageData2);
+  });
+  
+  // Image 4
+  $('.image-editor-4').cropit({
+  });
+
+  $('.image-editor-4 .export').click(function(e) {
+    e.preventDefault();
+    var imageData2 = $('.image-editor-4').cropit('export', {
+      type: 'image/jpeg'
+    });
+    $('.image-editor-4 .preview-image').html('<img src="' + imageData2 + '">');
+    console.log(imageData2);
+    $('#image4').val(imageData2);
   });
   
 });

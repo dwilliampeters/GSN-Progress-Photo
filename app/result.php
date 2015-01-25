@@ -22,12 +22,31 @@ function saveImage($base64img, $imgNum, $serverdir, &$filename){
   return $filename;
 }
 
-
-$imgBase1 = $_POST['image1'];
-$imgBase2 = $_POST['image2'];
-
-saveImage($imgBase1, 'img1', $serverdir, $filename);
-saveImage($imgBase2, 'img2', $serverdir, $filename);
+if ($_POST['day'] == '3') {
+  $imgBase1 = $_POST['image1'];
+  $imgBase2 = $_POST['image2'];
+  $imgBase3 = $_POST['image3'];
+  
+  saveImage($imgBase1, 'img1', $serverdir, $filename);
+  saveImage($imgBase2, 'img2', $serverdir, $filename);
+  saveImage($imgBase3, 'img3', $serverdir, $filename);
+} else if ($_POST['day'] == '4') {
+  $imgBase1 = $_POST['image1'];
+  $imgBase2 = $_POST['image2'];
+  $imgBase3 = $_POST['image3'];
+  $imgBase4 = $_POST['image4'];
+  
+  saveImage($imgBase1, 'img1', $serverdir, $filename);
+  saveImage($imgBase2, 'img2', $serverdir, $filename);
+  saveImage($imgBase3, 'img3', $serverdir, $filename);
+  saveImage($imgBase4, 'img4', $serverdir, $filename);
+} else {
+  $imgBase1 = $_POST['image1'];
+  $imgBase2 = $_POST['image2'];
+  
+  saveImage($imgBase1, 'img1', $serverdir, $filename);
+  saveImage($imgBase2, 'img2', $serverdir, $filename);
+}
 
 // Image 1
 /*$img1_base64img = str_replace('data:image/jpeg;base64,', '', $_POST['image1']);
@@ -53,11 +72,13 @@ $imgShare = 'share.png';
 
 $img1 = $serverdir.$filename[0];
 $img2 = $serverdir.$filename[1];
+$img3 = $serverdir.$filename[2];
+$img4 = $serverdir.$filename[3];
 /*$img1 = $serverdir.$img1_fname;
 $img2 = $serverdir.$img2_fname;*/
-$img3 = $absolutedir.$appImgDir.$imgDay1;
-$img4 = $absolutedir.$appImgDir.$imgDay7;
-$img5 = $absolutedir.$appImgDir.$imgShare;
+$appImg1 = $absolutedir.$appImgDir.$imgDay1;
+$appImg2 = $absolutedir.$appImgDir.$imgDay7;
+$appImg3 = $absolutedir.$appImgDir.$imgShare;
 
 function imageCreateFromAny($filepath) { 
   $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize() 
@@ -88,9 +109,9 @@ function imageCreateFromAny($filepath) {
 }
 $src1 = imageCreateFromAny($img1);
 $src2 = imageCreateFromAny($img2);
-$src3 = imagecreatefrompng($img3);
-$src4 = imagecreatefrompng($img4);
-$src5 = imagecreatefrompng($img5);
+$src3 = imagecreatefrompng($appImg1);
+$src4 = imagecreatefrompng($appImg2);
+$src5 = imagecreatefrompng($appImg3);
 $dest = imagecreatetruecolor(600, 400);
 
 imagecopyresampled($dest, $src1, 0, 0, 0, 0, 600, 400, 600, 400);
