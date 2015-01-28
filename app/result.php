@@ -177,8 +177,9 @@ if ($_POST['day'] == '3') {
   imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 200, 300, 200, 300);
   imagecopyresampled($dest, $srcDay1, 0, 0, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded2, 200, 0, 0, 0, 200, 300, 200, 300);
-  imagecopyresampled($dest, $srcDay2, 300, 0, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcDay2, 200, 0, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded3, 400, 0, 0, 0, 200, 300, 200, 300);
+  imagecopyresampled($dest, $srcDay3, 400, 0, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcBrand, 0, 100, 0, 0, 600, 200, 600, 200);
 } else if ($_POST['day'] == '4') {
   $dest = imagecreatetruecolor(600, 800);
@@ -195,21 +196,21 @@ if ($_POST['day'] == '3') {
 } else if ($_POST['day'] == '5') {
   $dest = imagecreatetruecolor(600, 400);
 
-  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 300, 200, 300, 200);
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 150, 200, 300, 400);
   imagecopyresampled($dest, $srcDay1, 0, 0, 0, 0, 200, 50, 200, 50);
-  imagecopyresampled($dest, $srcUploaded2, 150, 0, 0, 0, 300, 200, 300, 200);
+  imagecopyresampled($dest, $srcUploaded2, 150, 0, 0, 0, 150, 200, 300, 400);
   imagecopyresampled($dest, $srcDay2, 150, 0, 0, 0, 200, 50, 200, 50);
-  imagecopyresampled($dest, $srcUploaded3, 0, 200, 0, 0, 300, 200, 300, 200);
+  imagecopyresampled($dest, $srcUploaded3, 0, 200, 0, 0, 150, 200, 300, 400);
   imagecopyresampled($dest, $srcDay3, 0, 200, 0, 0, 200, 50, 200, 50);
-  imagecopyresampled($dest, $srcUploaded4, 150, 200, 0, 0, 300, 200, 300, 200);
+  imagecopyresampled($dest, $srcUploaded4, 150, 200, 0, 0, 150, 200, 300, 400);
   imagecopyresampled($dest, $srcDay4, 150, 200, 0, 0, 200, 50, 200, 50);
-  imagecopyresampled($dest, $srcUploaded5, 300, 0, 0, 0, 600, 400, 300, 200);
+  imagecopyresampled($dest, $srcUploaded5, 300, 0, 0, 0, 300, 400, 300, 400);
   imagecopyresampled($dest, $srcDay5, 300, 0, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcBrand, 0, 200, 0, 0, 600, 200, 600, 200);
 } else {
   $dest = imagecreatetruecolor(600, 400);
 
-  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 600, 400, 600, 400);
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 300, 400, 600, 400);
   imagecopyresampled($dest, $srcDay1, 0, 0, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded2, 300, 0, 0, 0, 600, 400, 600, 400);
   imagecopyresampled($dest, $srcDay2, 300, 0, 0, 0, 200, 50, 200, 50);
