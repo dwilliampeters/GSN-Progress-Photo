@@ -18,7 +18,7 @@ function saveImage($base64img, $imgNum, $serverdir, &$filename){
   $file = UPLOAD_DIR.$fname;
   file_put_contents($file,$data);
   $filename[] = $fname;
-  
+
   return $filename;
 }
 
@@ -26,26 +26,56 @@ if ($_POST['day'] == '3') {
   $imgBase1 = $_POST['image1'];
   $imgBase2 = $_POST['image2'];
   $imgBase3 = $_POST['image3'];
-  
+
   saveImage($imgBase1, 'img1', $serverdir, $filename);
   saveImage($imgBase2, 'img2', $serverdir, $filename);
   saveImage($imgBase3, 'img3', $serverdir, $filename);
+
+  $uploadedImg1 = $serverdir.$filename[0];
+  $uploadedImg2 = $serverdir.$filename[1];
+  $uploadedImg3 = $serverdir.$filename[2];
 } else if ($_POST['day'] == '4') {
   $imgBase1 = $_POST['image1'];
   $imgBase2 = $_POST['image2'];
   $imgBase3 = $_POST['image3'];
   $imgBase4 = $_POST['image4'];
-  
+
   saveImage($imgBase1, 'img1', $serverdir, $filename);
   saveImage($imgBase2, 'img2', $serverdir, $filename);
   saveImage($imgBase3, 'img3', $serverdir, $filename);
   saveImage($imgBase4, 'img4', $serverdir, $filename);
+
+  $uploadedImg1 = $serverdir.$filename[0];
+  $uploadedImg2 = $serverdir.$filename[1];
+  $uploadedImg3 = $serverdir.$filename[2];
+  $uploadedImg4 = $serverdir.$filename[3];
+} else if ($_POST['day'] == '5') {
+  $imgBase1 = $_POST['image1'];
+  $imgBase2 = $_POST['image2'];
+  $imgBase3 = $_POST['image3'];
+  $imgBase4 = $_POST['image4'];
+  $imgBase5 = $_POST['image5'];
+
+  saveImage($imgBase1, 'img1', $serverdir, $filename);
+  saveImage($imgBase2, 'img2', $serverdir, $filename);
+  saveImage($imgBase3, 'img3', $serverdir, $filename);
+  saveImage($imgBase4, 'img4', $serverdir, $filename);
+  saveImage($imgBase5, 'img5', $serverdir, $filename);
+
+  $uploadedImg1 = $serverdir.$filename[0];
+  $uploadedImg2 = $serverdir.$filename[1];
+  $uploadedImg3 = $serverdir.$filename[2];
+  $uploadedImg4 = $serverdir.$filename[3];
+  $uploadedImg5 = $serverdir.$filename[4];
 } else {
   $imgBase1 = $_POST['image1'];
   $imgBase2 = $_POST['image2'];
-  
+
   saveImage($imgBase1, 'img1', $serverdir, $filename);
   saveImage($imgBase2, 'img2', $serverdir, $filename);
+
+  $uploadedImg1 = $serverdir.$filename[0];
+  $uploadedImg2 = $serverdir.$filename[1];
 }
 
 // Image 1
@@ -70,55 +100,113 @@ $imgDay1 = 'day1.png';
 $imgDay7 = 'day7.png';
 $imgShare = 'share.png';
 
-$img1 = $serverdir.$filename[0];
-$img2 = $serverdir.$filename[1];
-$img3 = $serverdir.$filename[2];
-$img4 = $serverdir.$filename[3];
 /*$img1 = $serverdir.$img1_fname;
 $img2 = $serverdir.$img2_fname;*/
 $appImg1 = $absolutedir.$appImgDir.$imgDay1;
 $appImg2 = $absolutedir.$appImgDir.$imgDay7;
 $appImg3 = $absolutedir.$appImgDir.$imgShare;
 
-function imageCreateFromAny($filepath) { 
-  $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize() 
-  $allowedTypes = array( 
-    1,  // [] gif 
-    2,  // [] jpg 
-    3,  // [] png 
-    6   // [] bmp 
-  ); 
-  if (!in_array($type, $allowedTypes)) { 
-    return false; 
-  } 
-  switch ($type) { 
-    case 1 : 
-      $im = imageCreateFromGif($filepath); 
-    break; 
-    case 2 : 
-      $im = imageCreateFromJpeg($filepath); 
-    break; 
-    case 3 : 
-      $im = imageCreateFromPng($filepath); 
-    break; 
-    case 6 : 
-      $im = imageCreateFromBmp($filepath); 
-    break; 
-  }    
-  return $im;  
+function imageCreateFromAny($filepath) {
+  $type = exif_imagetype($filepath); // [] if you don't have exif you could use getImageSize()
+  $allowedTypes = array(
+    1,  // [] gif
+    2,  // [] jpg
+    3,  // [] png
+    6   // [] bmp
+  );
+  if (!in_array($type, $allowedTypes)) {
+    return false;
+  }
+  switch ($type) {
+    case 1 :
+      $im = imageCreateFromGif($filepath);
+    break;
+    case 2 :
+      $im = imageCreateFromJpeg($filepath);
+    break;
+    case 3 :
+      $im = imageCreateFromPng($filepath);
+    break;
+    case 6 :
+      $im = imageCreateFromBmp($filepath);
+    break;
+  }
+  return $im;
 }
-$src1 = imageCreateFromAny($img1);
-$src2 = imageCreateFromAny($img2);
+
+if ($_POST['day'] == '3') {
+  $srcUploaded1 = imageCreateFromAny($uploadedImg1);
+  $srcUploaded2 = imageCreateFromAny($uploadedImg2);
+  $srcUploaded3 = imageCreateFromAny($uploadedImg3);
+} else if ($_POST['day'] == '4') {
+  $srcUploaded1 = imageCreateFromAny($uploadedImg1);
+  $srcUploaded2 = imageCreateFromAny($uploadedImg2);
+  $srcUploaded3 = imageCreateFromAny($uploadedImg3);
+  $srcUploaded4 = imageCreateFromAny($uploadedImg4);
+} else if ($_POST['day'] == '5') {
+  $srcUploaded1 = imageCreateFromAny($uploadedImg1);
+  $srcUploaded2 = imageCreateFromAny($uploadedImg2);
+  $srcUploaded3 = imageCreateFromAny($uploadedImg3);
+  $srcUploaded4 = imageCreateFromAny($uploadedImg4);
+  $srcUploaded5 = imageCreateFromAny($uploadedImg5);
+} else {
+  $srcUploaded1 = imageCreateFromAny($uploadedImg1);
+  $srcUploaded2 = imageCreateFromAny($uploadedImg2);
+}
+
+/*$srcUploaded1 = imageCreateFromAny($uploadedImg1);
+$srcUploaded2 = imageCreateFromAny($uploadedImg2);
+$srcUploaded3 = imageCreateFromAny($uploadedImg3);
+$srcUploaded4 = imageCreateFromAny($uploadedImg4);*/
 $src3 = imagecreatefrompng($appImg1);
 $src4 = imagecreatefrompng($appImg2);
 $src5 = imagecreatefrompng($appImg3);
-$dest = imagecreatetruecolor(600, 400);
 
-imagecopyresampled($dest, $src1, 0, 0, 0, 0, 600, 400, 600, 400);
+if ($_POST['day'] == '3') {
+  $dest = imagecreatetruecolor(600, 300);
+
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 200, 300, 200, 300);
+  imagecopyresampled($dest, $src3, 20, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded2, 200, 0, 0, 0, 200, 300, 200, 300);
+  imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded3, 400, 0, 0, 0, 200, 300, 200, 300);
+  imagecopyresampled($dest, $src5, 5, 200, 0, 0, 900, 200, 900, 200);
+} else if ($_POST['day'] == '4') {
+  $dest = imagecreatetruecolor(600, 800);
+
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 600, 800, 600, 800);
+  imagecopyresampled($dest, $src3, 20, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded2, 300, 0, 0, 0, 600, 800, 600, 800);
+  imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded3, 0, 400, 0, 0, 600, 800, 600, 800);
+  imagecopyresampled($dest, $srcUploaded4, 300, 400, 0, 0, 600, 800, 600, 800);
+  imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);
+} else if ($_POST['day'] == '5') {
+  $dest = imagecreatetruecolor(600, 400);
+
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 300, 200, 600, 400);
+  imagecopyresampled($dest, $src3, 20, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded2, 150, 0, 0, 0, 300, 200, 600, 400);
+  imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded3, 0, 200, 0, 0, 300, 200, 600, 400);
+  imagecopyresampled($dest, $srcUploaded4, 150, 200, 0, 0, 300, 200, 600, 400);
+  imagecopyresampled($dest, $srcUploaded5, 300, 0, 0, 0, 600, 400, 600, 400);
+  imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);
+} else {
+  $dest = imagecreatetruecolor(600, 400);
+
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 600, 400, 600, 400);
+  imagecopyresampled($dest, $src3, 20, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $srcUploaded2, 300, 0, 0, 0, 600, 400, 600, 400);
+  imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
+  imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);
+}
+
+/*imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 600, 400, 600, 400);
 imagecopyresampled($dest, $src3, 20, 10, 0, 0, 200, 50, 200, 50);
-imagecopyresampled($dest, $src2, 300, 0, 0, 0, 600, 400, 600, 400);
+imagecopyresampled($dest, $srcUploaded2, 300, 0, 0, 0, 600, 400, 600, 400);
 imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
-imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);
+imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);*/
 
 $uploadDir = 'uploads/';
 $uploadFilename = 'img_'.date('Y-m-d-H-s').'.jpg';
@@ -153,7 +241,7 @@ if(isset($_POST['name']) && isset($_POST['email'])) {
     <link rel="stylesheet" href="css/app.css">
   </head>
   <body>
-    
+
   <script>
     window.fbAsyncInit = function() {
       FB.init({
@@ -171,7 +259,7 @@ if(isset($_POST['name']) && isset($_POST['email'])) {
        fjs.parentNode.insertBefore(js, fjs);
      }(document, 'script', 'facebook-jssdk'));
   </script>
-    
+
     <header class="banner @@class" role="banner">
       <div>
         <div class="banner--title">

@@ -4,10 +4,10 @@
 }
 
 .image-editor {
-  
+
   .preview-image {
     margin-top: 20px;
-    
+
     span {
       background: #eee;
       padding: 10px;
@@ -25,6 +25,11 @@
   width: 300px;
   height: 400px;
   cursor: move;
+}
+
+.day-5 .cropit-image-preview {
+  /*width: 150px;
+  height: 200px;*/
 }
 
 .cropit-image-background {
