@@ -56,7 +56,7 @@ gulp.task('scripts', function() {
   gulp.src(['./src/js/components/*.js','./src/js/modules/*.js','./src/js/*.js'])
     .pipe(concat('app.js'))
     //.pipe(stripDebug())
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(gulp.dest('./app/js/'));
 });
 
