@@ -189,7 +189,9 @@ if ($_POST['day'] == '3') {
   imagecopyresampled($dest, $srcUploaded2, 150, 0, 0, 0, 300, 200, 300, 200);
   imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded3, 0, 200, 0, 0, 300, 200, 300, 200);
+  imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded4, 150, 200, 0, 0, 300, 200, 300, 200);
+  imagecopyresampled($dest, $src4, 320, 10, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded5, 300, 0, 0, 0, 600, 400, 300, 200);
   imagecopyresampled($dest, $src5, 5, 200, 0, 0, 600, 200, 600, 200);
 } else {
