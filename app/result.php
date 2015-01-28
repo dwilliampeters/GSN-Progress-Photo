@@ -210,7 +210,7 @@ if ($_POST['day'] == '3') {
 } else {
   $dest = imagecreatetruecolor(600, 400);
 
-  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 300, 400, 600, 400);
+  imagecopyresampled($dest, $srcUploaded1, 0, 0, 0, 0, 600, 400, 600, 400);
   imagecopyresampled($dest, $srcDay1, 0, 0, 0, 0, 200, 50, 200, 50);
   imagecopyresampled($dest, $srcUploaded2, 300, 0, 0, 0, 600, 400, 600, 400);
   imagecopyresampled($dest, $srcDay2, 300, 0, 0, 0, 200, 50, 200, 50);
@@ -292,6 +292,8 @@ if(isset($_POST['name']) && isset($_POST['email'])) {
           </div>
           <div class="result-share">
             <a class="button facebook-share" href="#" data-url="http://gsntransformationcentre.co.uk" data-img="uploads/<?php echo $uploadFilename; ?>">Share your result photo</a>
+            <hr>
+            <a href="http://gsntransformationcentre.co.uk/progress/">&raquo; Go back</a>
           </div>
         </div>
 
